@@ -26,7 +26,6 @@ const FileUploadFromDrive = ({
             developerKey: "AIzaSyD_El5LerrvZ_GsH9y4mv8exwRA7b42QIY",
             viewId: view,
             showUploadView: true,
-            token:"ya29.a0Ad52N3_QOsw8pPkfpEt_vEx-cPIEg_5i-3y4YOvOCDeJ3Wyddj-hyUohLfpp3QptdYN7CgViLWDvTrkfcwPc2h9zkdIVjG_JDbH8D82H8jiJYiXCMHLKlF7LmeprPeh1AA4ioAW8GA_UVrCfqLEsGAPVXypgimD89iKuaCgYKATQSARASFQHGX2MiU3rte4m3D4uB43uWEJLD1g0171",
             showUploadFolders: true,
             supportDrives: true,
             setIncludeFolders: true,
@@ -37,9 +36,8 @@ const FileUploadFromDrive = ({
                     console.log('User clicked cancel/close button')
                 }
                 if (data.action === "picked") {
-                    const url = data.docs[0].url
-                    console.log(data);
-                    
+                    const url = data.docs[0].embedUrl;
+                    console.log(url)
                     setValue(url);
                 }
             },
@@ -50,7 +48,7 @@ const FileUploadFromDrive = ({
 
         <div className={className}>
             <button
-                className='border shadow-2xl p-2 rounded-lg text-white bg-blue-500'
+                className='border shadow-2xl p-1 rounded-lg text-white bg-blue-500'
                 onClick={handleOpenPicker}>
                 Pick form google
             </button>

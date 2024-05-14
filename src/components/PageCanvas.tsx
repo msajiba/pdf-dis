@@ -1,19 +1,18 @@
 "use client"
 import React, { useEffect, useRef } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
+import Link from 'next/link';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.js`;
 
-const PageCanvas = ({ url = "example.pdf" }: { url: any }) => {
+const PageCanvas = ({ url = "" }: { url: any }) => {
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const rendering = useRef(false);
-
+    
     useEffect(() => {
         const fetchPDF = async () => {
             try {
-
-
                 const response = await fetch(url);
                 const pdfBlob = await response.blob();
                 const arrayBuffer = await pdfBlob.arrayBuffer();
@@ -29,12 +28,7 @@ const PageCanvas = ({ url = "example.pdf" }: { url: any }) => {
                     if (canvasContext) {
                         const pdfDoc = await pdfjsLib.getDocument({
                             data: pdfData,
-                            origin: "http://localhost:3000",
-                            // hostname: "https://drive.google.com",
-                            
                         }).promise;
-                        // const pdfDoc = await pdfjsLib.getDocument(url).promise;
-                        console.log("pdfDoc ===>", pdfDoc);
 
                         if (pdfDoc) {
                             const pageNumber = 1;
@@ -66,7 +60,8 @@ const PageCanvas = ({ url = "example.pdf" }: { url: any }) => {
 
     return (
         <div className='border shadow-xl canva-page '>
-            <h4 className='text-center'> PDF View </h4>
+            <h4 className='text-center'> PDF View  </h4>
+            <Link className='text-center text-blue-500' target='_blank' href={url}> {url && url}</Link>
             <canvas ref={canvasRef} className='canva-page'></canvas>
         </div>
     );
