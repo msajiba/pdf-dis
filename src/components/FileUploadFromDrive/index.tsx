@@ -22,8 +22,8 @@ const FileUploadFromDrive = ({
     const [openPicker] = useDrivePicker();
     const handleOpenPicker = async () => {
         openPicker({
-            clientId: "62769356348-lvslpcvcoqo3qfv5jseufea6ajuhgh9u.apps.googleusercontent.com",
-            developerKey: "AIzaSyD_El5LerrvZ_GsH9y4mv8exwRA7b42QIY",
+            clientId: "907467641037-qb7v086c64kea224kqkckejul94sqjfr.apps.googleusercontent.com",
+            developerKey: "AIzaSyAT5PrNJ1lB5hDU3Op_Fn9tRI1rR4Z8t2k",
             viewId: view,
             showUploadView: true,
             showUploadFolders: true,
